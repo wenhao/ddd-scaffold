@@ -1,0 +1,19 @@
+plugins {
+    id 'application'
+}
+
+repositories {
+    maven {
+        url 'https://maven.aliyun.com/repository/public'
+    }
+}
+
+dependencies {
+    implementation 'com.google.guava:guava:31.0.1-jre'
+
+    testImplementation 'junit:junit:4.13'
+}
+
+application {
+    mainClass = 'com.github.wenhao.app.App'
+}
