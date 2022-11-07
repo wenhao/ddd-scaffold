@@ -1,4 +1,4 @@
-rootProject.name = 'ddd-scaffold'
+rootProject.name = 'smart-ddd-scaffold'
 include 'api'
 include 'domain'
 include 'main'
