@@ -1,0 +1,12 @@
+plugins {
+    id 'java-application-conventions'
+}
+
+group = 'com.github.wenhao'
+version = '1.0.0'
+
+dependencies {
+    implementation project(':ddd-annotation')
+
+    implementation 'com.google.guava:guava:31.0.1-jre'
+}

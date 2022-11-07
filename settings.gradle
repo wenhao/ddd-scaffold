@@ -1,2 +1,3 @@
 rootProject.name = 'ddd-scaffold'
-include('app')
+include 'api'
+include 'ddd-annotation'
