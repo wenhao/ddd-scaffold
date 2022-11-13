@@ -25,7 +25,8 @@ public interface OrderMapper {
 
     @Mappings({
             @Mapping(target = "id", ignore = true),
-            @Mapping(target = "createdAt", expression = "java(new java.util.Date())")
+            @Mapping(target = "createdAt", expression = "java(new java.util.Date())"),
+            @Mapping(target = "comments", ignore = true)
     })
     Order toOrder(OrderCreateRequest request);
 

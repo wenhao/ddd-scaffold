@@ -12,6 +12,8 @@ public class Order {
     private BigDecimal totalPrice;
     private Date createdAt;
 
+    private Comments comments;
+
     public Long getId() {
         return id;
     }
@@ -58,5 +60,17 @@ public class Order {
 
     public void setTotalPrice(BigDecimal totalPrice) {
         this.totalPrice = totalPrice;
+    }
+
+    public Comments comments() {
+        return comments;
+    }
+
+    public void setComments(Comments comments) {
+        this.comments = comments;
+    }
+
+    public interface Comments {
+        List<Comment> findByIdentity(Long orderId);
     }
 }
