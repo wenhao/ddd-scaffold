@@ -6,7 +6,12 @@ plugins {
 
 dependencies {
     implementation project(':domain')
+    implementation project(':persistent')
     implementation project(':api')
 
+    implementation 'org.springframework.boot:spring-boot-starter-hateoas'
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.2'
+    implementation 'org.flywaydb:flyway-core'
+    implementation 'com.h2database:h2'
 }
