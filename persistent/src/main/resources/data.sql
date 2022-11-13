@@ -1,4 +1,4 @@
-INSERT INTO `order`
+INSERT INTO `t_order`
 VALUES ('1', '1', 'CREATED', '7900', '2022-11-12 15:00:00');
 
 INSERT INTO `order_item`

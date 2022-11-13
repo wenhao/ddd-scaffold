@@ -5,6 +5,10 @@
 ![订单领域建模](./docs/订单模型关系图.png)
 ![smart-ddd建模](./docs/smart-ddd建模.png)
 
+### 指南
+
+1. 使用Mybatis的目的：domian层可以与Spring Jpa解耦。
+
 ### 本地运行
 
 `./gradlew clean :main:bootRun`

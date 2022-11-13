@@ -1,6 +1,6 @@
 CREATE TABLE `order_item`
 (
-    `id`           BIGINT         NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    `id`           BIGINT         AUTO_INCREMENT NOT NULL PRIMARY KEY,
     `order_id`     BIGINT         NOT NULL,
     `product_name` VARCHAR(255)   NOT NULL,
     `quantity`     BIGINT         NOT NULL,
