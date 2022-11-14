@@ -8,6 +8,8 @@ import com.github.wenhao.ddd.model.OrderItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.Optional;
+
 @Component
 public class Orders implements com.github.wenhao.ddd.model.Orders {
 
@@ -23,8 +25,16 @@ public class Orders implements com.github.wenhao.ddd.model.Orders {
     }
 
     @Override
-    public Order findById(Long orderId) {
+    public Optional<Order> findById(Long orderId) {
         Order order = orderRepository.findById(orderId);
+        order.setComments(comments);
+        return Optional.of(order);
+    }
+
+    @Override
+    public Order of(Long orderId) {
+        Order order = new Order();
+        order.setId(orderId);
         order.setComments(comments);
         return order;
     }
@@ -36,5 +46,10 @@ public class Orders implements com.github.wenhao.ddd.model.Orders {
             orderItem.setOrderId(orderId);
             orderItemRepository.create(orderItem);
         }
+    }
+
+    @Override
+    public void cancel(Long id) {
+        orderRepository.cancel(id);
     }
 }

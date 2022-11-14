@@ -1,6 +1,7 @@
 package com.github.wenhao.ddd.associations.repository;
 
 import com.github.wenhao.ddd.model.Order;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Many;
 import org.apache.ibatis.annotations.Mapper;
@@ -26,4 +27,7 @@ public interface OrderRepository {
     @Insert("INSERT INTO t_order(customer_id,order_status,total_price,created_at) VALUES(#{customerId}, #{orderStatus}, #{totalPrice}, #{createdAt})")
     @Options(useGeneratedKeys = true, keyProperty = "id")
     Long create(Order order);
+
+    @Delete("UPDATE t_order SET order_status='CANCELLED' WHERE id=#{id}")
+    void cancel(Long id);
 }
