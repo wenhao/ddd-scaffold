@@ -9,14 +9,16 @@
 
 #### 分层
 
-分层需要权衡：适当的分层达到促进，过度的分层破坏抽象。
+分层需要权衡：适当的分层促进解耦，过度的分层破坏抽象。
 
 * main: 应用启动入口。
 * api: 展现层，定义RESTful API。
 * domain: 核心领域层。没有任何依赖。
-* persistent: 数据持久化层。
+* persistent: 数据持久化层。管理领域对象生命周期具体的实现。
 
-聚合根(Root)具有管理领域对象的生命周期，类似传统DDD中的Repository，如Customers、Orders、Products。
+Customer、Order、Product是聚合根，聚合根的生命周期有Repository来管理即Customers、Orders、Products。
+
+#### 脚手架
 
 1. 使用Mybatis的目的：domian层可以与Spring Jpa解耦。
 
