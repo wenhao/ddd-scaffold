@@ -20,7 +20,7 @@ Customer、Order、Product是聚合根，聚合根的生命周期有Repository�
 
 #### 脚手架
 
-1. 使用Mybatis的目的：domian层可以与Spring Jpa解耦。
+1. 使用Mybatis的目的：domain层可以与Spring Jpa解耦。
 
 ### 本地运行
 
