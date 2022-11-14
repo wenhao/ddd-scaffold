@@ -1,6 +1,6 @@
 package com.github.wenhao.ddd.associations;
 
-import com.github.wenhao.ddd.associations.repository.CommentRepository;
+import com.github.wenhao.ddd.repository.CommentRepository;
 import com.github.wenhao.ddd.model.Comment;
 import com.github.wenhao.ddd.model.Order;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,4 +1,4 @@
-package com.github.wenhao.ddd.associations.repository;
+package com.github.wenhao.ddd.repository;
 
 import com.github.wenhao.ddd.model.Order;
 import org.apache.ibatis.annotations.Delete;
@@ -19,7 +19,7 @@ public interface OrderRepository {
             @Result(
                     property = "orderItems",
                     column = "id",
-                    many = @Many(select = "com.github.wenhao.ddd.associations.repository.OrderItemRepository.findAllByOrderId")
+                    many = @Many(select = "com.github.wenhao.ddd.repository.OrderItemRepository.findAllByOrderId")
             )
     })
     Order findById(Long id);

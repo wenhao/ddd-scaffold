@@ -8,7 +8,6 @@ import com.github.wenhao.ddd.presentation.response.CommentResponse;
 import com.github.wenhao.ddd.presentation.response.OrderResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -48,6 +47,12 @@ public class OrderApi {
     @PostMapping("cancel")
     public ResponseEntity<Void> cancel(@PathVariable Long id) {
         orders.cancel(id);
+        return ResponseEntity.ok().build();
+    }
+
+    @PostMapping("pay")
+    public ResponseEntity<Void> pay(@PathVariable Long id) {
+        orders.pay(id);
         return ResponseEntity.ok().build();
     }
 }

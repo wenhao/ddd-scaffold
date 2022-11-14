@@ -1,4 +1,4 @@
-package com.github.wenhao.ddd.associations.repository;
+package com.github.wenhao.ddd.repository;
 
 import com.github.wenhao.ddd.model.Comment;
 import org.apache.ibatis.annotations.Mapper;

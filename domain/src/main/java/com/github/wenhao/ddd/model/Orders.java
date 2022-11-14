@@ -11,4 +11,6 @@ public interface Orders {
     void create(Order order);
 
     void cancel(Long id);
+
+    void pay(Long id);
 }
