@@ -5,7 +5,7 @@ import com.github.wenhao.ddd.model.Order;
 // Feign Client in reality
 public class PaymentClient {
 
-    public void pay(Order order) {
+    public void pay(Order order, String payType) {
         return;
     }
 }

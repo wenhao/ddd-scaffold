@@ -61,7 +61,7 @@ public class Orders implements com.github.wenhao.ddd.model.Orders {
     }
 
     @Override
-    public void pay(Long id) {
-        findById(id).ifPresent(paymentClient::pay);
+    public void pay(Long id, String payType) {
+        findById(id).ifPresent(it -> paymentClient.pay(it, payType));
     }
 }

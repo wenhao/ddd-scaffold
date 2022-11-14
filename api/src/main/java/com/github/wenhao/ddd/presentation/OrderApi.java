@@ -50,9 +50,9 @@ public class OrderApi {
         return ResponseEntity.ok().build();
     }
 
-    @PostMapping("pay")
-    public ResponseEntity<Void> pay(@PathVariable Long id) {
-        orders.pay(id);
+    @PostMapping("payment/{payType}")
+    public ResponseEntity<Void> pay(@PathVariable Long id, @PathVariable String payType) {
+        orders.pay(id, payType);
         return ResponseEntity.ok().build();
     }
 }

@@ -12,5 +12,5 @@ public interface Orders {
 
     void cancel(Long id);
 
-    void pay(Long id);
+    void pay(Long id, String payType);
 }
