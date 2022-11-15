@@ -22,6 +22,11 @@ public class OrderComments implements Order.Comments {
     public List<Comment> findByIdentity(Long orderId) {
         return this.commentRepository.findAllByOrderId(orderId);
     }
+
+    @Override
+    public void create(Comment comment) {
+        this.commentRepository.create(comment);
+    }
 }
 
 

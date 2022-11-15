@@ -4,13 +4,16 @@ import com.github.wenhao.ddd.model.Comment;
 import com.github.wenhao.ddd.model.Orders;
 import com.github.wenhao.ddd.presentation.mapper.CommentMapper;
 import com.github.wenhao.ddd.presentation.mapper.OrderMapper;
+import com.github.wenhao.ddd.presentation.request.CommentCreateRequest;
 import com.github.wenhao.ddd.presentation.response.CommentResponse;
 import com.github.wenhao.ddd.presentation.response.OrderResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -38,12 +41,6 @@ public class OrderApi {
                 .orElse(ResponseEntity.ok().build());
     }
 
-    @GetMapping("/comments")
-    public ResponseEntity<List<CommentResponse>> comments(@PathVariable Long id) {
-        List<Comment> comments = orders.of(id).comments().findByIdentity(id);
-        return ResponseEntity.ok(commentMapper.toCommentResponses(comments));
-    }
-
     @PostMapping("cancel")
     public ResponseEntity<Void> cancel(@PathVariable Long id) {
         orders.cancel(id);
@@ -53,6 +50,19 @@ public class OrderApi {
     @PostMapping("payment/{payType}")
     public ResponseEntity<Void> pay(@PathVariable Long id, @PathVariable String payType) {
         orders.pay(id, payType);
+        return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/comments")
+    public ResponseEntity<List<CommentResponse>> comments(@PathVariable Long id) {
+        List<Comment> comments = orders.of(id).comments().findByIdentity(id);
+        return ResponseEntity.ok(commentMapper.toCommentResponses(comments));
+    }
+
+    @PostMapping("/comments")
+    public ResponseEntity<Void> createComment(@PathVariable Long id, @RequestBody @Validated CommentCreateRequest request) {
+        Comment comment = commentMapper.toComment(id, request);
+        orders.of(id).comments().create(comment);
         return ResponseEntity.ok().build();
     }
 }

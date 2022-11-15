@@ -72,5 +72,7 @@ public class Order {
 
     public interface Comments {
         List<Comment> findByIdentity(Long orderId);
+
+        void create(Comment comment);
     }
 }
