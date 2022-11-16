@@ -7,7 +7,7 @@ import com.github.wenhao.ddd.presentation.mapper.OrderMapper;
 import com.github.wenhao.ddd.presentation.request.CommentCreateRequest;
 import com.github.wenhao.ddd.presentation.response.CommentResponse;
 import com.github.wenhao.ddd.presentation.response.OrderResponse;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,18 +21,12 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/orders/{id}")
+@RequiredArgsConstructor
 public class OrderApi {
 
     private final OrderMapper orderMapper;
     private final CommentMapper commentMapper;
     private final Orders orders;
-
-    @Autowired
-    public OrderApi(OrderMapper orderMapper, CommentMapper commentMapper, Orders orders) {
-        this.orderMapper = orderMapper;
-        this.commentMapper = commentMapper;
-        this.orders = orders;
-    }
 
     @GetMapping()
     public ResponseEntity<OrderResponse> findById(@PathVariable Long id) {
@@ -55,14 +49,14 @@ public class OrderApi {
 
     @GetMapping("/comments")
     public ResponseEntity<List<CommentResponse>> comments(@PathVariable Long id) {
-        List<Comment> comments = orders.of(id).comments().findByIdentity(id);
+        List<Comment> comments = orders.of(id).getComments().findByIdentity(id);
         return ResponseEntity.ok(commentMapper.toCommentResponses(comments));
     }
 
     @PostMapping("/comments")
     public ResponseEntity<Void> createComment(@PathVariable Long id, @RequestBody @Validated CommentCreateRequest request) {
         Comment comment = commentMapper.toComment(id, request);
-        orders.of(id).comments().create(comment);
+        orders.of(id).getComments().create(comment);
         return ResponseEntity.ok().build();
     }
 }

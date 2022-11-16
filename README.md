@@ -30,7 +30,7 @@
 
 关键对象：
 
-1. 实体集合对象(Entity Collection Object): 类比为某个实体的群体或数据库，负责该实体的查询、创建、删除、更新等生命周期操作。举例Orders.findByXXX()、Orders.create()、Orders.cancel()等更符合业务逻辑的语义。
+1. 实体集合对象(Entity Collection Object): 类比为某个实体的群体或数据库，负责该实体生命周期管理例如查询、创建、删除、更新等生命周期操作。举例Orders.findByXXX()、Orders.create()、Orders.cancel()等更符合业务逻辑的语义。只要不是一个实体的业务逻辑都可以抽象到集合逻辑上。
 2. 聚合根对象(Aggregation Root Object): 
 3. 实体关联对象(Entity Association Object): 实体之间的关系存在跨聚合或跨生命周期的引用，传统DDD理论由于外部实体不能引用非聚合根之外的实体原则只能通过领域服务(Domain Service)去加载其他聚合的实体导致业务一致性从领域中剥离出去。Smart DDD抽象实体之间的关联关系(association)，从而达到领域之间的分层与隔离。
 

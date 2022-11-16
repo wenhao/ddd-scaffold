@@ -7,12 +7,13 @@ import com.github.wenhao.ddd.model.Order.Comments;
 import com.github.wenhao.ddd.model.OrderItem;
 import com.github.wenhao.ddd.repository.OrderItemRepository;
 import com.github.wenhao.ddd.repository.OrderRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.Optional;
 
 @Component
+@RequiredArgsConstructor
 public class Orders implements com.github.wenhao.ddd.model.Orders {
 
     private final OrderRepository orderRepository;
@@ -20,15 +21,6 @@ public class Orders implements com.github.wenhao.ddd.model.Orders {
     private final Comments comments;
     private final InventoryClient inventoryClient;
     private final PaymentClient paymentClient;
-
-    @Autowired
-    public Orders(OrderRepository orderRepository, OrderItemRepository orderItemRepository, Comments comments) {
-        this.orderRepository = orderRepository;
-        this.orderItemRepository = orderItemRepository;
-        this.comments = comments;
-        this.inventoryClient = new InventoryClient();
-        this.paymentClient = new PaymentClient();
-    }
 
     @Override
     public Optional<Order> findById(Long orderId) {
