@@ -24330,17 +24330,6 @@
 						},
 						{
 							"_type": "FreelineEdgeView",
-							"_id": "AAAAAAGEf4nmfcS/syg=",
-							"_parent": {
-								"$ref": "AAAAAAGEWjbWE+5eBpw="
-							},
-							"font": "Arial;13;0",
-							"lineStyle": 3,
-							"points": "536:560;552:576;568:560",
-							"headEndStyle": 1
-						},
-						{
-							"_type": "FreelineEdgeView",
 							"_id": "AAAAAAGEf4plgcjEriE=",
 							"_parent": {
 								"$ref": "AAAAAAGEWjbWE+5eBpw="
