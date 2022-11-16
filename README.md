@@ -3,7 +3,6 @@
 ### 建模案例
 
 ![订单领域建模](./docs/订单模型关系图.png)
-![smart-ddd建模](./docs/smart-ddd建模.png)
 
 ### 需求
 
@@ -21,11 +20,19 @@
 
 ### Smart DDD模式方法论
 
+![smart-ddd建模](./docs/smart-ddd建模.png)
+
 1. 纯粹的面向对象，没有service和manager等贫血对象。
 2. 所有模型设计成完全连接的对象图，中间不存在孤立的对象。
 3. 所有的模型概念映射为RESTful API并通过HATEOAS连接。
 4. 成为屏蔽实现细节的抽象层。
 5. 在概念模型/模型/API之间形成完全的映射和一致，看到API能想到模型的能力暴露，是一个完全充血的模型。
+
+关键对象：
+
+1. 实体集合对象(Entity Collection Object): 类比为某个实体的群体或数据库，负责该实体的查询、创建、删除、更新等生命周期操作。举例Orders.findByXXX()、Orders.create()、Orders.cancel()等更符合业务逻辑的语义。
+2. 聚合根对象(Aggregation Root Object): 
+3. 实体关联对象(Entity Association Object): 实体之间的关系存在跨聚合或跨生命周期的引用，传统DDD理论由于外部实体不能引用非聚合根之外的实体原则只能通过领域服务(Domain Service)去加载其他聚合的实体导致业务一致性从领域中剥离出去。Smart DDD抽象实体之间的关联关系(association)，从而达到领域之间的分层与隔离。
 
 ### 指南
 
@@ -40,11 +47,6 @@
 
 1. 分层需要权衡：适当的分层促进解耦，过度的分层破坏抽象。
 2. 没有service层，所有service层的领域逻辑需要回到domain层保持领域模型是`充血模型`。
-
-```text
-聚合根负责实体的生命周期管理，聚合根委托给Repository来完成生命周期的管理。
-Customer、Order、Product是聚合根，聚合根的生命周期有Repository来管理即Customers、Orders、Products。
-```
 
 #### 脚手架
 
