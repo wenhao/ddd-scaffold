@@ -45,6 +45,11 @@
 * persistent: 数据持久化层。管理领域对象生命周期具体的实现。
 * main: 应用启动入口。
 
+区别
+
+1. 改进了传统DDD中的展现层(Presentation Layer)，展现层主要响应用户的操作，在Smart DDD中直接将模型概念映射为RESTful API更能体现领域模型的业务能力。
+2. 去掉了传统DDD中的应用层(Application Layer)，应用层主要用来协调不同聚合之间的协作，在Smart DDD中通过实体关联对象(Entity Association Object)完成。
+
 #### 注意事项
 
 1. 分层需要权衡：适当的分层促进解耦，过度的分层破坏抽象。
