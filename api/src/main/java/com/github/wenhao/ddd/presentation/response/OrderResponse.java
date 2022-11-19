@@ -1,9 +1,14 @@
 package com.github.wenhao.ddd.presentation.response;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
+@Getter
+@Setter
 public class OrderResponse {
     private Long id;
     private Date CreatedAt;
@@ -11,52 +16,4 @@ public class OrderResponse {
     private String orderStatus;
     private List<OrderItemResponse> orderItems;
     private BigDecimal totalPrice;
-
-    public List<OrderItemResponse> getOrderItems() {
-        return orderItems;
-    }
-
-    public void setOrderItems(List<OrderItemResponse> orderItems) {
-        this.orderItems = orderItems;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Date getCreatedAt() {
-        return CreatedAt;
-    }
-
-    public void setCreatedAt(Date createdAt) {
-        CreatedAt = createdAt;
-    }
-
-    public Long getCustomerId() {
-        return customerId;
-    }
-
-    public void setCustomerId(Long customerId) {
-        this.customerId = customerId;
-    }
-
-    public String getOrderStatus() {
-        return orderStatus;
-    }
-
-    public void setOrderStatus(String orderStatus) {
-        this.orderStatus = orderStatus;
-    }
-
-    public BigDecimal getTotalPrice() {
-        return totalPrice;
-    }
-
-    public void setTotalPrice(BigDecimal totalPrice) {
-        this.totalPrice = totalPrice;
-    }
 }
