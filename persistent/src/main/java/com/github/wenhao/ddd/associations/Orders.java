@@ -41,7 +41,7 @@ public class Orders implements com.github.wenhao.ddd.model.Orders {
 
     @Override
     public void create(Order order) {
-        inventoryClient.check(order);
+        inventoryClient.validate(order);
         Long orderId = orderRepository.create(order);
         for (OrderItem orderItem : order.getOrderItems()) {
             orderItem.setOrderId(orderId);

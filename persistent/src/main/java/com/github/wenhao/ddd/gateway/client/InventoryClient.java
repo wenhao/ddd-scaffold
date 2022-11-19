@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 // Feign Client in reality
 @Component
 public class InventoryClient {
-    public void check(Order order) {
+    public void validate(Order order) {
         return;
     }
 }
