@@ -1,6 +1,7 @@
 package com.github.wenhao.ddd.associations;
 
 import com.github.wenhao.ddd.gateway.client.InventoryClient;
+import com.github.wenhao.ddd.gateway.client.NotificationClient;
 import com.github.wenhao.ddd.gateway.client.PaymentClient;
 import com.github.wenhao.ddd.model.Order;
 import com.github.wenhao.ddd.model.Order.Comments;
@@ -21,6 +22,7 @@ public class Orders implements com.github.wenhao.ddd.model.Orders {
     private final Comments comments;
     private final InventoryClient inventoryClient;
     private final PaymentClient paymentClient;
+    private final NotificationClient notificationClient;
 
     @Override
     public Optional<Order> findById(Long orderId) {
@@ -45,6 +47,7 @@ public class Orders implements com.github.wenhao.ddd.model.Orders {
             orderItem.setOrderId(orderId);
             orderItemRepository.create(orderItem);
         }
+        notificationClient.notifier(order);
     }
 
     @Override
