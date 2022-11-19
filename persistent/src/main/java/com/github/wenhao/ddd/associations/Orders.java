@@ -47,7 +47,7 @@ public class Orders implements com.github.wenhao.ddd.model.Orders {
             orderItem.setOrderId(orderId);
             orderItemRepository.create(orderItem);
         }
-        notificationClient.notifier(order);
+        notificationClient.notify(order);
     }
 
     @Override

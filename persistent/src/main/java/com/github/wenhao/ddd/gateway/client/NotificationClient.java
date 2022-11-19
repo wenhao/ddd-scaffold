@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 // Feign Client in reality
 @Component
 public class NotificationClient {
-    public void notifier(Order order) {
+    public void notify(Order order) {
         return;
     }
 }
