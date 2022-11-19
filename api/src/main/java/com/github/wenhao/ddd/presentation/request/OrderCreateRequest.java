@@ -11,6 +11,6 @@ import java.util.List;
 public class OrderCreateRequest {
     private Long customerId;
     private String orderStatus;
-    private List<OrderItemCreateRequest> orderItemRequests;
+    private List<OrderItemCreateRequest> orderItems;
     private BigDecimal totalPrice;
 }
