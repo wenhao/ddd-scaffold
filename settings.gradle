@@ -1,5 +1,5 @@
 rootProject.name = 'smart-ddd-scaffold'
 include 'domain'
 include 'api'
-include 'persistent'
+include 'infrastructure'
 include 'main'

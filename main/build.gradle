@@ -6,7 +6,7 @@ plugins {
 
 dependencies {
     implementation project(':domain')
-    implementation project(':persistent')
+    implementation project(':infrastructure')
     implementation project(':api')
 
     implementation 'org.springframework.boot:spring-boot-starter-hateoas'
