@@ -1,10 +1,10 @@
 package com.github.wenhao.ddd.model;
 
-import lombok.Getter;
-import lombok.Setter;
-
 import java.math.BigDecimal;
 import java.util.Date;
+
+import lombok.Getter;
+import lombok.Setter;
 
 @Getter
 @Setter

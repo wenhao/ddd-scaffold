@@ -4,11 +4,13 @@ import java.util.Optional;
 
 public interface Orders {
 
+    Order getById(Long orderId);
+
     Optional<Order> findById(Long orderId);
 
     Order of(Long orderId);
 
-    void create(Order order);
+    Long create(Order order);
 
     void cancel(Long id);
 

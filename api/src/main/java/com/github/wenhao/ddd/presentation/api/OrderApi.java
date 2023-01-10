@@ -1,4 +1,4 @@
-package com.github.wenhao.ddd.presentation;
+package com.github.wenhao.ddd.presentation.api;
 
 import com.github.wenhao.ddd.model.Comment;
 import com.github.wenhao.ddd.model.Orders;
@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+
+import static org.springframework.http.HttpStatus.CREATED;
 
 @RestController
 @RequestMapping("/orders/{id}")
@@ -57,6 +59,6 @@ public class OrderApi {
     public ResponseEntity<Void> createComment(@PathVariable Long id, @RequestBody @Validated CommentCreateRequest request) {
         Comment comment = commentMapper.toComment(id, request);
         orders.of(id).getComments().create(comment);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.status(CREATED).build();
     }
 }

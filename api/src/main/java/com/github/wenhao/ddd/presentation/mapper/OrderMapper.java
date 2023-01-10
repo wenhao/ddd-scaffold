@@ -19,20 +19,20 @@ public interface OrderMapper {
 
     OrderItemResponse toOrderItemResponse(OrderItem orderItem);
 
-    List<OrderResponse> toOrderResponses(List<Order> orders);
-
     OrderResponse toOrderResponse(Order order);
 
     @Mappings({
             @Mapping(target = "id", ignore = true),
             @Mapping(target = "createdAt", expression = "java(new java.util.Date())"),
-            @Mapping(target = "comments", ignore = true)
+            @Mapping(target = "comments", ignore = true),
+            @Mapping(target = "status", ignore = true, defaultValue = "CREATED")
     })
     Order toOrder(OrderCreateRequest request);
 
     @Mappings({
             @Mapping(target = "id", ignore = true),
-            @Mapping(target = "createdAt", expression = "java(new java.util.Date())")
+            @Mapping(target = "createdAt", expression = "java(new java.util.Date())"),
+            @Mapping(target = "orderId", ignore = true)
     })
     OrderItem toOrderItem(OrderItemCreateRequest orderItemCreateRequest);
 }

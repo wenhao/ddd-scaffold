@@ -1,5 +1,9 @@
 package com.github.wenhao.ddd.associations;
 
+import java.util.Optional;
+
+import org.springframework.stereotype.Component;
+
 import com.github.wenhao.ddd.gateway.client.InventoryClient;
 import com.github.wenhao.ddd.gateway.client.NotificationClient;
 import com.github.wenhao.ddd.gateway.client.PaymentClient;
@@ -8,10 +12,8 @@ import com.github.wenhao.ddd.model.Order.Comments;
 import com.github.wenhao.ddd.model.OrderItem;
 import com.github.wenhao.ddd.repository.OrderItemRepository;
 import com.github.wenhao.ddd.repository.OrderRepository;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
 
-import java.util.Optional;
+import lombok.RequiredArgsConstructor;
 
 @Component
 @RequiredArgsConstructor
@@ -25,10 +27,19 @@ public class Orders implements com.github.wenhao.ddd.model.Orders {
     private final NotificationClient notificationClient;
 
     @Override
-    public Optional<Order> findById(Long orderId) {
+    public Order getById(final Long orderId) {
         Order order = orderRepository.findById(orderId);
         order.setComments(comments);
-        return Optional.of(order);
+        return order;
+    }
+
+    @Override
+    public Optional<Order> findById(Long orderId) {
+        Order order = orderRepository.findById(orderId);
+        return Optional.ofNullable(order).map(it -> {
+            order.setComments(comments);
+            return Optional.of(order);
+        }).orElse(Optional.empty());
     }
 
     @Override
@@ -40,7 +51,7 @@ public class Orders implements com.github.wenhao.ddd.model.Orders {
     }
 
     @Override
-    public void create(Order order) {
+    public Long create(Order order) {
         inventoryClient.validate(order);
         Long orderId = orderRepository.create(order);
         for (OrderItem orderItem : order.getOrderItems()) {
@@ -48,6 +59,7 @@ public class Orders implements com.github.wenhao.ddd.model.Orders {
             orderItemRepository.create(orderItem);
         }
         notificationClient.notify(order);
+        return orderId;
     }
 
     @Override

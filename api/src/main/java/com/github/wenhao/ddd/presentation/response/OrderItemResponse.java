@@ -10,8 +10,9 @@ import java.util.Date;
 @Setter
 public class OrderItemResponse {
     private Long id;
+    private Long orderId;
     private String productName;
-    private int quantity;
+    private Long quantity;
     private BigDecimal price;
     private BigDecimal totalPrice;
     private Date createdAt;
