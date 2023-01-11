@@ -28,8 +28,5 @@ jacocoTestCoverageVerification {
 }
 
 test {
-    finalizedBy jacocoTestReport
+    finalizedBy jacocoTestReport,jacocoTestCoverageVerification
 }
-
-check.dependsOn jacocoTestCoverageVerification
-
