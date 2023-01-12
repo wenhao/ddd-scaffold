@@ -28,18 +28,16 @@ public class Orders implements com.github.wenhao.ddd.model.Orders {
 
     @Override
     public Order getById(final Long orderId) {
-        Order order = orderRepository.findById(orderId);
-        order.setComments(comments);
-        return order;
+        return findById(orderId).orElseThrow(RuntimeException::new);
     }
 
     @Override
     public Optional<Order> findById(Long orderId) {
-        Order order = orderRepository.findById(orderId);
-        return Optional.ofNullable(order).map(it -> {
-            order.setComments(comments);
-            return Optional.of(order);
-        }).orElse(Optional.empty());
+        Optional<Order> optionalOrder = orderRepository.findById(orderId);
+        return optionalOrder.map(it -> {
+            it.setComments(comments);
+            return it;
+        });
     }
 
     @Override

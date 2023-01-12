@@ -1,5 +1,7 @@
 package com.github.wenhao.ddd.repository;
 
+import java.util.Optional;
+
 import com.github.wenhao.ddd.model.Order;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
@@ -23,7 +25,7 @@ public interface OrderRepository {
                     many = @Many(select = "com.github.wenhao.ddd.repository.OrderItemRepository.findAllByOrderId")
             )
     })
-    Order findById(Long id);
+    Optional<Order> findById(Long id);
 
     @Insert("INSERT INTO t_order(customer_id,order_status,total_price,created_at) VALUES(#{customerId}, #{orderStatus}, #{totalPrice}, #{createdAt})")
     @Options(useGeneratedKeys = true, keyProperty = "id")
