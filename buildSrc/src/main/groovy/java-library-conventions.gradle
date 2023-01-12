@@ -5,7 +5,6 @@ plugins {
 }
 
 test {
-    useJUnitPlatform()
     jacoco {
         destinationFile = file("${buildDir}/jacoco/jacoco.exec")
     }
