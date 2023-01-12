@@ -22,6 +22,12 @@ dependencies {
     implementation 'com.h2database:h2'
 }
 
+task jacocoMergeTest(type: JacocoMerge) {
+    dependsOn ':api:jacocoTestReport', ':infrastructure:jacocoTestReport', ':main:startScripts'
+    destinationFile = file("${buildDir}/jacoco/test.exec")
+    executionData = project.fileTree(dir: "${rootDir}", include: '**/build/jacoco/jacoco.exec')
+}
+
 tasks.named('check') {
     dependsOn tasks.named('testCodeCoverageReport', JacocoReport)
 }
@@ -38,4 +44,5 @@ testCodeCoverageReport {
                 ])
             }
     ))
+    finalizedBy jacocoMergeTest
 }

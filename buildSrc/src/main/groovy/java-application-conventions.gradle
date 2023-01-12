@@ -3,5 +3,3 @@ plugins {
     id 'application'
     id 'jacoco-report-aggregation'
 }
-
-

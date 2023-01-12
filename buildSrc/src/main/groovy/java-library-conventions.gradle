@@ -4,6 +4,14 @@ plugins {
     id 'jacoco'
 }
 
+test {
+    useJUnitPlatform()
+    jacoco {
+        destinationFile = file("${buildDir}/jacoco/jacoco.exec")
+    }
+    finalizedBy jacocoTestReport, jacocoTestCoverageVerification
+}
+
 jacoco {
     toolVersion = "0.8.8"
 }
@@ -25,8 +33,4 @@ jacocoTestCoverageVerification {
             }
         }
     }
-}
-
-test {
-    finalizedBy jacocoTestReport,jacocoTestCoverageVerification
 }
