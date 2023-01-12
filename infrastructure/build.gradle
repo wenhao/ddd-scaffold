@@ -21,12 +21,10 @@ dependencies {
 }
 
 jacocoTestReport {
-    afterEvaluate {
-        classDirectories.setFrom((files(classDirectories.files.collect {
-            fileTree(dir: it, excludes: ['**/client/**',
-                                         '**/repository/**'])
-        })))
-    }
+    classDirectories.setFrom((files(classDirectories.files.collect {
+        fileTree(dir: it, excludes: ['**/client/**',
+                                     '**/repository/**'])
+    })))
 }
 
 jacocoTestCoverageVerification {

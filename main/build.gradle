@@ -21,3 +21,21 @@ dependencies {
     implementation 'org.flywaydb:flyway-core'
     implementation 'com.h2database:h2'
 }
+
+tasks.named('check') {
+    dependsOn tasks.named('testCodeCoverageReport', JacocoReport)
+}
+
+testCodeCoverageReport {
+    getClassDirectories().setFrom(files(
+            [project(':api'),
+             project(':infrastructure'),
+            ].collect {
+                it.fileTree(dir: "${it.buildDir}/classes/java/main", exclude: [
+                        '**/client/**',
+                        '**/repository/**',
+                        '**/Application'
+                ])
+            }
+    ))
+}
