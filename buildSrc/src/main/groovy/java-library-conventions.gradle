@@ -5,9 +5,6 @@ plugins {
 }
 
 test {
-    jacoco {
-        destinationFile = file("${buildDir}/jacoco/jacoco.exec")
-    }
     finalizedBy jacocoTestReport, jacocoTestCoverageVerification
 }
 
