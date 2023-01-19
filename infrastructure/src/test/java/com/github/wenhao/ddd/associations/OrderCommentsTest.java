@@ -47,6 +47,6 @@ class OrderCommentsTest {
         List<Comment> comments = this.comments.findByIdentity(orderId);
 
         // then
-        assertThat(comments.get(0)).isEqualToComparingFieldByField(comment);
+        assertThat(comments.get(0)).usingRecursiveComparison().isEqualTo(comment);
     }
 }

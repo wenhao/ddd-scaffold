@@ -108,6 +108,7 @@ class OrderApiTest {
         ResponseEntity<List<CommentResponse>> response = orderApi.comments(id);
 
         // then
-        assertThat(response.getBody().get(0)).isEqualToComparingFieldByFieldRecursively(OrderTestHelper.getCommentResponse());
+        assertThat(response.getBody().get(0)).usingRecursiveComparison()
+                .isEqualTo(OrderTestHelper.getCommentResponse());
     }
 }

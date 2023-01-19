@@ -80,7 +80,7 @@ class CommentMapperTest {
         List<CommentResponse> commentResponses = commentMapper.toCommentResponses(ImmutableList.of(OrderTestHelper.getOrderComment()));
 
         // then
-        assertThat(commentResponses.get(0)).isEqualToComparingFieldByField(OrderTestHelper.getCommentResponse());
+        assertThat(commentResponses.get(0)).usingRecursiveComparison().isEqualTo(OrderTestHelper.getCommentResponse());
     }
 
     @Test

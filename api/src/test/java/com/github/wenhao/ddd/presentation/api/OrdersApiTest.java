@@ -46,5 +46,7 @@ class OrdersApiTest {
         // then
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(response.getBody()).isEqualToComparingFieldByFieldRecursively(orderResponse);
+        assertThat(response.getBody()).usingRecursiveComparison()
+                .isEqualTo(orderResponse);
     }
 }

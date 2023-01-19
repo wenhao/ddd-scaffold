@@ -85,7 +85,7 @@ class OrderMapperTest {
         OrderResponse orderResponse = orderMapper.toOrderResponse(OrderTestHelper.getOrder());
 
         // then
-        assertThat(orderResponse).isEqualToComparingFieldByFieldRecursively(OrderTestHelper.getOrderResponse());
+        assertThat(orderResponse).usingRecursiveComparison().isEqualTo(OrderTestHelper.getOrderResponse());
     }
 
     @Test
@@ -107,7 +107,7 @@ class OrderMapperTest {
         OrderItemResponse orderItemResponse = orderMapper.toOrderItemResponse(OrderTestHelper.getOrder().getOrderItems().get(0));
 
         // then
-        assertThat(orderItemResponse).isEqualToComparingFieldByField(OrderTestHelper.getOrder().getOrderItems().get(0));
+        assertThat(orderItemResponse).usingRecursiveComparison().isEqualTo(OrderTestHelper.getOrder().getOrderItems().get(0));
     }
 
     @Test
