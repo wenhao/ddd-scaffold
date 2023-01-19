@@ -20,18 +20,16 @@ dependencies {
     testImplementation 'com.h2database:h2'
 }
 
-jacocoTestReport {
+tasks.named('jacocoTestReport') {
     classDirectories.setFrom((files(classDirectories.files.collect {
         fileTree(dir: it, excludes: ['**/client/**',
                                      '**/repository/**'])
     })))
 }
 
-jacocoTestCoverageVerification {
-    violationRules {
-        rule {
-            excludes = ['**.client.*',
-                        '**.repository.*']
-        }
-    }
+tasks.named('jacocoTestCoverageVerification') {
+    def excludes = ['**.client.*',
+                    '**.repository.*',
+    ]
+    violationRules.getRules().first().setExcludes(excludes)
 }
